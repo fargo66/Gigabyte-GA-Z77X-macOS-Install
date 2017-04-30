@@ -5,7 +5,7 @@ set -e
 set -u
 
 # GA-Z77X.sh script version
-gScriptVersion="2.0.6"
+gScriptVersion="2.0.7"
 
 # Styles
 gStyleReset="\e[0m"
@@ -231,7 +231,7 @@ function detect_thunderbolt()
 function install()
 {
 	# Mount the EFI system partition
-	gEFIMount=$("$gRepo/acpi/tools/mount_efi.sh")
+	gEFIMount=$("$gRepo/acpi/build/tools/mount_efi.sh")
 
 	local date="$(date '+%Y-%m-%d %Hh %Mm %Ss')"
 	# Check if we are upgrading a current install
@@ -336,6 +336,7 @@ function install()
 	cp -R "$gRepo/kexts/AppleALC.kext" "$gEFIMount/EFI/CLOVER/kexts/Other"
 	cp -R "$gRepo/kexts/CoreDisplayFixup.kext" "$gEFIMount/EFI/CLOVER/kexts/Other"
 	cp -R "$gRepo/kexts/FakeSMC.kext" "$gEFIMount/EFI/CLOVER/kexts/Other"
+	cp -R "$gRepo/kexts/HibernationFixup.kext" "$gEFIMount/EFI/CLOVER/kexts/Other"
 	cp -R "$gRepo/kexts/IntelGraphicsFixup.kext" "$gEFIMount/EFI/CLOVER/kexts/Other"
 	cp -R "$gRepo/kexts/Lilu.kext" "$gEFIMount/EFI/CLOVER/kexts/Other"
 	cp -R "$gRepo/kexts/Shiki.kext" "$gEFIMount/EFI/CLOVER/kexts/Other"
